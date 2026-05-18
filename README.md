@@ -1,90 +1,95 @@
 # HRZZ Mobile
 
-## Overview
+## 1. Hero Section
 
-HRZZ Mobile is a professional development and management application designed for an organization with administrators and practitioners. The platform allows administrators to manage practitioners, oversee a knowledge center, and track performance through reports and statistics. Practitioners can use the app to submit reports, access educational content, take quizzes, and monitor their own progress.
+HRZZ Mobile is split into two operational views: administrator and practitioner. Administrators manage practitioners, reports, knowledge-center content, and statistics. Practitioners work inside their own dashboard to submit reports, study, take quizzes, and review progress.
 
-## Demo
+## 2. Product / Workflow Overview
 
-(Add your demo video here)
-[Watch Demo](PUT_YOUR_VIDEO_LINK_HERE)
+The app separates management workflows from practitioner workflows so each role gets a focused UI and its own navigation path.
 
-## Features
+- Admin flow covers practitioner management, reports, statistics, and knowledge-center operations.
+- Practitioner flow covers report creation, learning content, quizzes, and personal progress tracking.
+- The dashboard layer is role-aware and routes users to the correct main shell after authentication.
+- Charts and summary views are used for operational reporting, not decorative analytics.
+- Arabic and English localization is part of the shared app shell.
 
-- **Dual User Roles:** Separate interfaces and functionalities for Administrators and Practitioners.
-- **Administrator Features:**
-  - Manage practitioner accounts.
-  - Oversee a "Knowledge Center" with educational materials.
-  - Generate and view comprehensive reports.
-  - Monitor overall statistics and performance, visualized with charts.
-- **Practitioner Features:**
-  - Submit and track personal reports.
-  - Access the Knowledge Center for learning.
-  - Participate in quizzes to test their knowledge.
-  - View personal statistics and performance data.
-- **Authentication:** Secure login for both user roles.
-- **Dashboard:** A personalized home screen for each user type.
-- Supports both English and Arabic.
+## 3. Engineering Highlights
 
-## Tech Stack
+- Feature organization is split into `admin`, `practical`, and `common`, which keeps shared code separate from role-specific screens.
+- Riverpod providers are kept close to each feature, with `FutureProvider`, `StateNotifierProvider`, and `StateProvider` used where they fit the workflow.
+- The project includes `riverpod_generator` in the toolchain, which supports a scalable provider pattern as the app grows.
+- AutoRoute manages a single navigation graph with separate initial routes for onboarding, login, admin shell, and practitioner shell.
+- Statistics, reports, and knowledge-center flows each keep their own providers and services instead of sharing one large controller.
+- Localized transitions and RTL-aware routing keep the UI behavior aligned with the selected language.
 
-- **Framework:** Flutter
-- **State Management:** Flutter Riverpod (with Riverpod Generator)
-- **Routing:** Auto Route
-- **API Client:** Dio
-- **Charting:** fl_chart
-- **UI:** persistent_bottom_nav_bar_v2
+## 4. Screenshots / Demo Placeholder
 
-## Architecture
+- Product walkthrough: ADD_VIDEO_OR_GIF_LINK
+- App screenshots: ADD_SCREENSHOT_LINKS
 
-The project is built with a feature-driven architecture, separating the application's logic into `admin` and `practical` (practitioner) feature sets. A `common` directory likely holds shared widgets and logic between these roles. The use of Riverpod Generator streamlines state management, and Auto Route handles navigation, creating a robust and maintainable codebase.
+## 5. Engineering Stack
 
-## Folder Structure
+- Flutter (Dart)
+- Flutter Riverpod
+- riverpod_generator
+- AutoRoute
+- Dio
+- fl_chart
+- persistent_bottom_nav_bar_v2
+- SharedPreferences
 
-```
+## 6. Architecture Overview
+
+1. `main.dart` and `HrzzApp` mount the router, translations, theme, and locale-aware material shell.
+2. `AppRouter` decides the initial flow from `RoutingPrefs` and applies role-specific route groups.
+3. Feature providers keep dashboard, statistics, reports, quizzes, and knowledge-center logic separate.
+4. Shared services handle network access and backend interaction while screens stay presentation-focused.
+5. Common widgets and theme helpers keep the admin and practitioner shells visually aligned.
+
+## 7. Simplified Folder Structure
+
+```text
 lib/
-├── app/
-│   ├── core/
-│   └── features/
-│       ├── admin/
-│       │   ├── home/
-│       │   ├── knowledge_center/
-│       │   ├── main/
-│       │   ├── practitioners/
-│       │   ├── reports/
-│       │   └── statistics/
-│       ├── common/
-│       └── practical/
-│           ├── add_report/
-│           ├── home/
-│           ├── knowledge_center/
-│           ├── main/
-│           ├── my_reports/
-│           ├── quizzes/
-│           └── statistics/
-├── generated/
-├── router/
-├── hrzz_app.dart
-└── main.dart
+  app/
+    core/
+    features/
+      admin/
+      common/
+      practical/
+  generated/
+  router/
+  hrzz_app.dart
+  main.dart
 ```
 
-## How It Works
+## 8. System Architecture Diagram (ASCII)
 
-The application provides two distinct experiences based on user roles.
+```text
+Presentation Layer
+      |
+      v
+Riverpod Providers
+      |
+      v
+Feature Services / Controllers
+      |
+      v
+Core API Layer
+      |
+      v
+HRZZ Backend
+```
 
-- **Administrators** log in to a dashboard where they can manage the platform's content and users. They can add or remove practitioners, upload materials to the knowledge center, and monitor the overall activity and performance through detailed reports and statistical charts.
-- **Practitioners** log in to their personal dashboard. They can submit reports, browse the knowledge center for information, take quizzes, and track their own performance and progress over time.
+## 9. My Responsibilities / Scope
 
-## Dependencies
+- Delivered the admin and practitioner workflow split.
+- Structured provider state for dashboards, reports, quizzes, and statistics.
+- Kept routing aligned with role-based entry and shell navigation.
+- Maintained the shared knowledge-center and reporting patterns across features.
+- Reused shared components so the two role experiences stay consistent.
 
-- `flutter_riverpod` & `riverpod_generator`: For state management.
-- `auto_route`: For navigation and routing.
-- `dio`: For making HTTP requests to the API.
-- `fl_chart`: For displaying charts and graphs.
-- `persistent_bottom_nav_bar_v2`: For the main navigation bar.
+## 10. Repository Notes
 
-## Notes
-
-- The application is well-structured, with a clear separation of concerns between different user roles.
-- The use of code generation for state management (Riverpod Generator) and routing (Auto Route) helps to reduce boilerplate and improve developer productivity.
-- The feature set suggests a focus on continuous professional development and performance tracking.
+- This repository is maintained as a portfolio showcase.
+- The README stays focused on implementation shape and operational workflow coverage.
