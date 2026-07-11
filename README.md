@@ -14,7 +14,20 @@ A professional, role-based Flutter mobile health and hospital management applica
 The application solves the problem of disconnected workflows between health practitioners and administrators by providing a unified, role-aware interface that handles data orchestration, reporting lifecycles, and continuing education.
 
 ---
+---
+## SuperVisor
 
+
+https://github.com/user-attachments/assets/a57ecc84-1cb3-4d4e-8e58-b01c81b0c404
+
+
+## Doctor
+
+
+https://github.com/user-attachments/assets/d1526b64-7a65-4373-9ef8-24b8c35c06cd
+
+
+---
 ## Features
 
 ### Shared Features (Common)
