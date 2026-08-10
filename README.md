@@ -6,11 +6,13 @@ A role-based Flutter healthcare application that streamlines incident reporting,
 
 ### Supervisor Experience
 
-https://github.com/user-attachments/assets/a57ecc84-1cb3-4d4e-8e58-b01c81b0c404
+https://github.com/user-attachments/assets/c1b37c99-db56-4a1c-948d-53ea082c1034
+
 
 ### Practitioner (Doctor) Experience
 
-https://github.com/user-attachments/assets/d1526b64-7a65-4373-9ef8-24b8c35c06cd
+https://github.com/user-attachments/assets/4754686e-bcde-4878-bb65-c4a48da39f61
+
 
 ## Overview
 
